@@ -1,28 +1,14 @@
-  interface Project {
-    id: number
-    nom: string
-    auteur: string
-    status: 'draft' | 'published' | 'archived'
-  }
-
-  const projects: Project[] = [
-    { id: 1, nom: 'Projet 1', auteur: 'Alice', status: 'draft' },
-    { id: 2, nom: 'Projet 2', auteur: 'Bob', status: 'published' },
-    { id: 3, nom: 'Projet 3', auteur: 'Charlie', status: 'archived' },
-  ]
+import { useState } from 'react'
 
 function App() {
 
+  const [completedTasks, setCompletedTasks] = useState<number>(0)
+
+
   return (
     <div>
-      <h1>Mes projets récents</h1>
-      <ul>
-        {projects.map((project) => (
-          <li key={project.id}>
-            <p>Nom: {project.nom}; Auteur: {project.auteur}; Status: {project.status}</p>
-          </li>
-        ))}
-      </ul>
+      <h1>Tâches complétées : {completedTasks}</h1>
+      <button onClick={() => setCompletedTasks((prev) => prev + 1)}>Ajouter une tâche</button>
     </div>
 
   )
